@@ -1,0 +1,39 @@
+---
+title: "My Project"
+author: "Elsa Abs"
+date: "4 Oct 2015"
+output: word_document
+---
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+summary(cars)
+```
+
+You can also embed plots, for example:
+
+```{r, echo=T}
+plot(cars)
+
+getwd()
+
+data1 <- read.table(file="/Users/elsa/software-carpentry-october-2015/output/combined_gapMinder.tsv",header=T)
+
+help(legend)
+
+#data2 <- subset(data1,data1$country=="China"|data1$country=="France"|data1$country=="Togo",select=country:gdpPercap)
+#data3 <- subset(data1,data1$country=="China",select=country:gdpPercap)
+#data4 <- subset(data1,data1$country=="France",select=country:gdpPercap)
+#data5 <- subset(data1,data1$country=="Nepal",select=country:gdpPercap)
+
+plot(x=data1$year[data1$country=="China"],y=data1$pop[data1$country=="China"], col="red",ylim=c(0, 1.4e+09), main="pop vs year",xlab="year", ylab="pop")
+  points(x=data1$year[data1$country=="France"],y=data1$pop[data1$country=="France"], col="green", ylim=c(0, 1.4e+09))
+  points(x=data1$year[data1$country=="Nepal"],y=data1$pop[data1$country=="Nepal"], col="blue", ylim=c(0, 1.4e+09))
+  legend("topleft", legend = c("China", "France", "Nepal"),pch=c(1,1,1), col=c("red","green","blue"))
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
